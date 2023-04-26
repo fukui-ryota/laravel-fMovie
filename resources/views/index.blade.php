@@ -1,4 +1,8 @@
 <x-layout>
+    <x-slot name="title">
+        fMovie
+    </x-slot>
+
     <h1>fMovie</h1>
     <ul>
         {{-- <li><?php echo htmlspecialchars($post[0], ENT_QUOTES, 'UTF-8'); ?></li> --}}
@@ -7,10 +11,10 @@
         <li>{{ $posts[2] }}</li> --}}
     </ul>
     <ul>
-        @forelse ($posts as $index => $post)
+        @forelse ($posts as $post)
             <li>
-                <a href="{{ route('posts.show', $index) }}">
-                    {{ $post }}
+                <a href="{{ route('posts.show', $post) }}">
+                    {{ $post->title }}
                 </a>
             </li>
         @empty
