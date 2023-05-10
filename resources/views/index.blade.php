@@ -2,8 +2,10 @@
     <x-slot name="title">
         fMovie
     </x-slot>
-
-    <h1>fMovie</h1>
+    <h1>
+      <span>fMovie</span>
+      <a href="{{ route('posts.create') }}">[Add]</a>
+    </h1>
     <ul>
         {{-- <li><?php echo htmlspecialchars($post[0], ENT_QUOTES, 'UTF-8'); ?></li> --}}
         {{-- <li>{{ $posts[0] }}</li>
