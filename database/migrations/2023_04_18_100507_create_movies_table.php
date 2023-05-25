@@ -15,17 +15,29 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
-            // カラムを追加する処理
-            // stringメソッドでは、引数に指定した値をカラム名として、文字列をセットできるカラムを追加。
             $table->string('name');
-            // dateメソッドでは、引数に指定した値をカラム名として、日付をセットできるカラムを追加。
-            $table->date('date');
-            // stringメソッドでは、引数に指定した値をカラム名として、文字列をセットできるカラムを追加。またnullableメソッドは、NULL値を許可。
-            $table->string('img')->nullable();
-            // unsignedIntegerでは、引数に指定した値をカラム名として、符号なし整数をセットできるカラムを追加
-            $table->unsignedInteger('age');
+            $table->unsignedBigInteger('subscription_id');
+            $table->unsignedBigInteger('director_id');
+            $table->unsignedBigInteger('performer_id');
+            $table->unsignedBigInteger('genre_id');
+
+            //外部キー制約の設定
+            $table
+                ->foreign('subscription_id')
+                ->references('id')
+                ->on('subscriptions');
+            $table
+                ->foreign('director_id')
+                ->references('id')
+                ->on('directors');
+            $table
+                ->foreign('performer_id')
+                ->references('id')
+                ->on('performers');
+            $table
+                ->foreign('genre_id')
+                ->references('id')
+                ->on('genres');
         });
     }
 
